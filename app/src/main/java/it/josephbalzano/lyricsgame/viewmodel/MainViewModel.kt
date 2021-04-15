@@ -42,7 +42,7 @@ class MainViewModel : ViewModel() {
                         chartsList.add(
                             ChartItem(
                                 it.getString("name") ?: "",
-                                it.getDouble("score").toString()
+                                it.getDouble("score")?.toInt() ?: 0
                             )
                         )
                 }
