@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    tools:context=".ui.ChartActivity">
+    tools:context=".ui.ChartDetailActivity">
 
     <TextView
         android:id="@+id/appName"
@@ -43,21 +43,50 @@
         app:layout_constraintEnd_toEndOf="@id/appName"
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/backEmoji"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/gordita_light"
-        android:text="Leaderboard"
-        android:textColor="@color/colorAccent"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        android:background="@drawable/bg_user_emoji"
+        app:layout_constraintEnd_toStartOf="@id/username"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@id/guideline3" />
 
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/gordita_regular"
+        android:text="jose fasdfasdf  pb"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/backEmoji"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/backEmoji"
+        app:layout_constraintTop_toTopOf="@id/backEmoji"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/emoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_regular"
+        android:text="🎸"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/backEmoji"
+        app:layout_constraintEnd_toEndOf="@id/backEmoji"
+        app:layout_constraintStart_toStartOf="@id/backEmoji"
+        app:layout_constraintTop_toTopOf="@id/backEmoji" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chart"
+        android:id="@+id/plays"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"

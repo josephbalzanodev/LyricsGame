@@ -12,6 +12,8 @@ import it.josephbalzano.lyricsgame.ui.ShareData.chartsList
 import it.josephbalzano.lyricsgame.ui.ShareData.tracksMap
 import it.josephbalzano.lyricsgame.ui.model.ChartItem
 import it.josephbalzano.lyricsgame.ui.model.QuizCard
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainViewModel : ViewModel() {
     val database: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -32,21 +34,32 @@ class MainViewModel : ViewModel() {
         return loadedGame
     }
 
+    fun getDateTime(l: Long): String =
+        try {
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            val netDate = Date(l * 1000)
+            sdf.format(netDate)
+        } catch (e: Exception) {
+            e.toString()
+        }
+
     fun loadChart(): MutableLiveData<Boolean> {
         val charts = database.collection("chart")
         charts.get()
             .addOnSuccessListener { document ->
                 thereIsChartValues.postValue(document.documents.isNotEmpty())
-                document.documents.forEach {
-                    if (it.getString("name")?.isNotBlank() == true)
-                        chartsList.add(
-                            ChartItem(
-                                it.getString("name") ?: "",
-                                it.getDouble("score")?.toInt() ?: 0
+                document.documents.forEach { doc ->
+                    if (doc.getString("name")?.isNotBlank() == true)
+                        if (!chartsList.any { it.id == doc.id })
+                            chartsList.add(
+                                ChartItem(
+                                    doc.id,
+                                    doc.getString("name") ?: "",
+                                    doc.getDouble("score")?.toInt() ?: 0,
+                                    getDateTime(doc.getTimestamp("date")?.seconds ?: 0)
+                                )
                             )
-                        )
                 }
-
             }
         return thereIsChartValues
     }

@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             this,
             Observer { play.isEnabled = it }
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         model.loadChart().observe(
             this,

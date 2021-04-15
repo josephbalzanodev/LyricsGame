@@ -13,9 +13,6 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/bg_chart_item"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
         android:translationZ="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,21 +20,41 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/scoreName"
+        android:id="@+id/whenTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/gordita_regular"
+        android:text="📅 Played:"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:translationZ="6dp"
+        app:layout_constraintBottom_toTopOf="@id/whenDate"
+        app:layout_constraintEnd_toEndOf="@id/half"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/whenDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/gordita"
-        android:text="Lorem Ipsum"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/gordita_ultra"
+        android:text="15 Aprile"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:translationZ="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/half"
+        app:layout_constraintEnd_toEndOf="@id/half"
         app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/whenTitle" />
 
     <TextView
         android:id="@+id/scoreTitle"
@@ -55,6 +72,7 @@
         app:layout_constraintBottom_toTopOf="@id/score"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
         app:layout_constraintStart_toStartOf="@id/half"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -72,6 +90,7 @@
         android:translationZ="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@id/half"
         app:layout_constraintTop_toBottomOf="@id/scoreTitle" />
 

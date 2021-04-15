@@ -1,3 +1,6 @@
 package it.josephbalzano.lyricsgame.ui.model
 
-data class ChartItem(val name: String, val score: Int)
+import java.text.SimpleDateFormat
+import java.util.*
+
+data class ChartItem(val id: String, val name: String, val score: Int, val date: String)
