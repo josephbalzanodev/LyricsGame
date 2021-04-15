@@ -7,39 +7,123 @@
     android:background="@drawable/bg_main"
     tools:context=".ui.PlayActivity">
 
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/swipeableCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
     <TextView
         android:id="@+id/timeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/gordita"
-        android:text="Tempo"
+        android:text="Time"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/gordita_ultra"
         android:text="10"
         android:textColor="@color/colorAccent"
-        android:textSize="52sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timeTitle" />
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTitle"
+        app:layout_constraintStart_toEndOf="@id/timeTitle"
+        app:layout_constraintTop_toTopOf="@id/timeTitle" />
 
-    <com.yuyakaido.android.cardstackview.CardStackView
-        android:id="@+id/swipeableCard"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingTop="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextView
+        android:id="@+id/scoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/gordita"
+        android:text="Score"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/gordita_ultra"
+        android:text="0"
+        android:textColor="@color/colorAccent"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTitle"
+        app:layout_constraintEnd_toStartOf="@+id/scoreTitle"
+        app:layout_constraintTop_toTopOf="@id/timeTitle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/postGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="name,save" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_ultra"
+        android:hint="Your name"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline4"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline" />
+
+    <Button
+        android:id="@+id/save"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:enabled="false"
+        android:text="@string/play_add_me"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/guideline4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="56dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="56dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

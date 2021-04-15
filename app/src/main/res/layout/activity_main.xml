@@ -69,6 +69,19 @@
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/play" />
 
+    <TextView
+        android:id="@+id/madeBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/gordita"
+        android:text="Made with ❤️ from Joseph Balzano"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"

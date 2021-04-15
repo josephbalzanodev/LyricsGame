@@ -5,6 +5,7 @@
     <string name="main_btn_play">play new game 🚀</string>
     <string name="main_btn_charts">charts 📊</string>
 
-    <string name="play_question">Chi canta questa canzone? 🎤</string>
+    <string name="play_question">Who sings this song? 🎤</string>
     <string name="play_sample_artist">Calcutta</string>
+    <string name="play_add_me">Save 🚀</string>
 </resources>

@@ -1,5 +1,6 @@
 package it.josephbalzano.lyricsgame.network
 
+import it.josephbalzano.lyricsgame.network.api.ArtistAPI
 import it.josephbalzano.lyricsgame.network.api.LyricsAPI
 import it.josephbalzano.lyricsgame.network.api.TrackAPI
 import okhttp3.OkHttpClient
@@ -22,4 +23,6 @@ object Client {
     fun lyrics(): LyricsAPI = retrofit.create(LyricsAPI::class.java)
 
     fun track(): TrackAPI = retrofit.create(TrackAPI::class.java)
+
+    fun artist(): ArtistAPI = retrofit.create(ArtistAPI::class.java)
 }
