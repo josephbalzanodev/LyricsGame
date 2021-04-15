@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.ChartActivity">
 
     <TextView
         android:id="@+id/appName"
@@ -14,7 +14,7 @@
         android:fontFamily="@font/gordita_black"
         android:text="@string/app_name"
         android:textColor="@color/colorAccent"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline"
@@ -28,7 +28,7 @@
         android:fontFamily="@font/gordita"
         android:text="@string/main_subtitle"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@id/musixmatchLogo"
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
@@ -43,31 +43,26 @@
         app:layout_constraintEnd_toEndOf="@id/appName"
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
-    <Button
-        android:id="@+id/play"
-        style="@style/Button"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/chartTItle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/main_btn_play"
-        app:layout_constraintBottom_toTopOf="@id/chart"
+        android:fontFamily="@font/gordita_light"
+        android:text="Leaderboard "
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="@id/guideline3" />
 
-    <Button
-        android:id="@+id/chart"
-        style="@style/Button"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:enabled="false"
-        android:text="@string/main_btn_charts"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/play" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chartTItle" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -88,5 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

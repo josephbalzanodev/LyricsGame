@@ -6,8 +6,8 @@
         <objectAnimator
             android:duration="100"
             android:propertyName="translationZ"
-            android:valueFrom="8dp"
-            android:valueTo="2dp"
+            android:valueFrom="14dp"
+            android:valueTo="8dp"
             android:valueType="floatType" />
     </item>
     <item
@@ -16,16 +16,16 @@
         <objectAnimator
             android:duration="100"
             android:propertyName="translationZ"
-            android:valueFrom="2dp"
-            android:valueTo="8dp"
+            android:valueFrom="8dp"
+            android:valueTo="14dp"
             android:valueType="floatType" />
     </item>
     <item android:state_enabled="false">
         <objectAnimator
             android:duration="100"
             android:propertyName="translationZ"
-            android:valueFrom="8dp"
-            android:valueTo="2dp"
+            android:valueFrom="14dp"
+            android:valueTo="8dp"
             android:valueType="floatType" />
     </item>
 </selector>

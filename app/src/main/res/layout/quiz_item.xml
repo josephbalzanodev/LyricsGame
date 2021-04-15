@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/quizBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_quiz_item"
+        android:translationZ="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/quizQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/gordita"
+        android:text="@string/play_question"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:translationZ="6dp"
+        app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/quizPhrase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="asdfasdf asfas dfasdf sadfas dfasdf asdfasdfasdf asdfasdf "
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:translationZ="6dp"
+        app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toBottomOf="@id/quizQuestion" />
+
+
+    <Button
+        android:id="@+id/first"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:enabled="true"
+        android:stateListAnimator="@animator/sla_button_top"
+        android:text="@string/play_sample_artist"
+        android:translationZ="6dp"
+        app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toBottomOf="@id/quizPhrase"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/second"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:enabled="true"
+        android:stateListAnimator="@animator/sla_button_top"
+        android:text="@string/play_sample_artist"
+        android:translationZ="6dp"
+        app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toBottomOf="@id/first"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/third"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:enabled="true"
+        android:stateListAnimator="@animator/sla_button_top"
+        android:text="@string/play_sample_artist"
+        android:translationZ="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/quizBack"
+        app:layout_constraintStart_toStartOf="@id/quizBack"
+        app:layout_constraintTop_toBottomOf="@id/second"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_goneMarginBottom="64dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
