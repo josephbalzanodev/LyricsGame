@@ -3,17 +3,25 @@
     <font
         android:font="@font/gordita_thin"
         android:fontStyle="normal"
-        android:fontWeight="200" />
+        android:fontWeight="100" />
     <font
         android:font="@font/gordita_thin_italic"
         android:fontStyle="italic"
-        android:fontWeight="200" />
+        android:fontWeight="100" />
     <font
         android:font="@font/gordita_light"
         android:fontStyle="normal"
-        android:fontWeight="300" />
+        android:fontWeight="200" />
     <font
         android:font="@font/gordita_light_italic"
+        android:fontStyle="italic"
+        android:fontWeight="200" />
+    <font
+        android:font="@font/gordita_regular"
+        android:fontStyle="normal"
+        android:fontWeight="300" />
+    <font
+        android:font="@font/gordita_regular_italic"
         android:fontStyle="italic"
         android:fontWeight="300" />
     <font
