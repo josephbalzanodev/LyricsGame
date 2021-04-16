@@ -17,6 +17,10 @@
         <item name="android:stateListAnimator">@animator/sla_button_main</item>
         <item name="android:clickable">true</item>
         <item name="android:textColor">#333333</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingStart">24dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/gordita_black</item>
         <item name="android:background">@drawable/sel_button_main</item>

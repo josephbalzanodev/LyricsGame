@@ -13,7 +13,12 @@ import it.josephbalzano.lyricsgame.utils.NavigationBar
 import kotlinx.android.synthetic.main.activity_chart.*
 
 class ChartActivity : AppCompatActivity(), ChartAdapter.ViewHolder.ChartItemListener {
-    private val adapter = ChartAdapter(chartsList.sortedByDescending { it.score }, this)
+    private val adapter =
+        ChartAdapter(
+            chartsList
+                .sortedByDescending { it.score }
+                .distinctBy { it.name }, this
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

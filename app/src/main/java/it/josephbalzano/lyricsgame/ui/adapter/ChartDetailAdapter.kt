@@ -28,7 +28,7 @@ class ChartDetailAdapter(
     ) : RecyclerView.ViewHolder(view) {
         fun bind(card: ChartItem) {
             itemView.score.text = card.score.toString()
-            itemView.whenDate.text = card.date
+            itemView.whenDate.text = "\uD83D\uDCC5 " + card.date
         }
     }
 }
