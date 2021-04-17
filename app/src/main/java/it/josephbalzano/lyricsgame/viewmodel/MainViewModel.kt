@@ -94,7 +94,14 @@ class MainViewModel : ViewModel() {
                         list.map { it.artist.artist_name }
                             .toMutableList()
                             .apply { add(this@saveLyrics.track.artist_name) },
-                        trackLyrics.message.body.lyrics.lyrics_body.split("\n")
+                        trackLyrics.message.body.lyrics.lyrics_body
+                            .split("\n")
+                            .filter {
+                                it != "" &&
+                                        it != "..." &&
+                                        it != "******* This Lyrics is NOT for Commercial use *******"
+                            }
+                            .dropLast(1)
                     )
                 )
             }.toCompletable()
