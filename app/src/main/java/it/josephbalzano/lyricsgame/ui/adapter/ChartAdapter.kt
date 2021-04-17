@@ -29,20 +29,21 @@ class ChartAdapter(
         view: View,
         var listener: ChartItemListener
     ) : RecyclerView.ViewHolder(view) {
-        fun bind(card: ChartItem, index: Int) {
-            itemView.score.text = card.score.toString()
-            itemView.scoreName.text =
-                when (index) {
-                    0 -> "\uD83E\uDD47 " + card.name
-                    1 -> "\uD83E\uDD48 " + card.name
-                    2 -> "\uD83E\uDD49 " + card.name
-                    else -> card.name
-                }
+        fun bind(card: ChartItem, index: Int) =
+            itemView.let {
+                it.score.text = card.score.toString()
+                it.scoreName.text =
+                    when (index) {
+                        0 -> "\uD83E\uDD47 " + card.name
+                        1 -> "\uD83E\uDD48 " + card.name
+                        2 -> "\uD83E\uDD49 " + card.name
+                        else -> card.name
+                    }
 
-            itemView.quizBack.setOnClickListener {
-                listener.onClick(card.name)
+                it.quizBack.setOnClickListener {
+                    listener.onClick(card.name)
+                }
             }
-        }
 
         interface ChartItemListener {
             fun onClick(username: String)

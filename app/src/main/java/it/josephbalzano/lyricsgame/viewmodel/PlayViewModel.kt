@@ -14,6 +14,7 @@ class PlayViewModel : ViewModel() {
 
     private val remainTime = MutableLiveData(10)
     private val score = MutableLiveData(0)
+    var currentPosQuiz = 0
 
     private var countdown: CountDownTimer =
         object : CountDownTimer(10000, 1000) {

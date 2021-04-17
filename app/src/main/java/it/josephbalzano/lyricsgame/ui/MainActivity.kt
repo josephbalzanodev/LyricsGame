@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import it.josephbalzano.lyricsgame.R
+import it.josephbalzano.lyricsgame.utils.Extension.setBlueNavigationBar
 import it.josephbalzano.lyricsgame.utils.NavigationBar
 import it.josephbalzano.lyricsgame.utils.NavigationBar.changeColor
 import it.josephbalzano.lyricsgame.viewmodel.MainViewModel
@@ -19,12 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            changeColor(
-                this,
-                NavigationBar.NavBarIconColor.LIGHT,
-                getColor(R.color.colorPrimary)
-            )
+        setBlueNavigationBar()
 
         initButtons()
 

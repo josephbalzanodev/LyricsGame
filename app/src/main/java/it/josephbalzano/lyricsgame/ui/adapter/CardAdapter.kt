@@ -7,8 +7,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import it.josephbalzano.lyricsgame.R
 import it.josephbalzano.lyricsgame.ui.model.QuizCard
+import it.josephbalzano.lyricsgame.utils.Extension.takeRandom
 import kotlinx.android.synthetic.main.quiz_item.view.*
-import kotlin.random.Random
 
 class CardAdapter(
     var quizCards: List<QuizCard> = listOf(),
@@ -23,7 +23,7 @@ class CardAdapter(
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(quizCards[position])
+        holder.bind(quizCards[position], position)
 
     override fun getItemCount(): Int = quizCards.size
 
@@ -33,8 +33,12 @@ class CardAdapter(
     ) : RecyclerView.ViewHolder(view) {
         var listButtons = listOf(itemView.first, itemView.second, itemView.third)
 
-        fun bind(card: QuizCard) {
-            itemView.quizPhrase.text = card.lyrics[Random.nextInt(0, card.lyrics.size)]
+        fun bind(card: QuizCard, pos: Int) {
+            var phrase = ""
+            card.lyrics
+                .takeRandom(2)
+                .forEach { phrase += it + "\n" }
+            itemView.quizPhrase.text = phrase
 
             card.possibilityArtist
                 .shuffled()
@@ -45,16 +49,21 @@ class CardAdapter(
             listButtons.forEach {
                 it.setOnClickListener { v ->
                     if ((v as Button).text == card.artist)
-                        listener.onCorrect()
-                    else listener.onError()
+                        listener.onCorrect(pos)
+                    else listener.onError(pos)
+
+                    disableButtons()
                 }
             }
         }
 
+        private fun disableButtons() =
+            listButtons.forEach { it.isEnabled = false }
+
         interface QuizCardListener {
             fun onStartQuiz()
-            fun onCorrect()
-            fun onError()
+            fun onCorrect(pos: Int)
+            fun onError(pos: Int)
         }
     }
 }

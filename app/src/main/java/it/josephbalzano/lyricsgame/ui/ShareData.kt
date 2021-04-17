@@ -5,5 +5,6 @@ import it.josephbalzano.lyricsgame.ui.model.QuizCard
 
 object ShareData {
     val tracksMap = mutableListOf<QuizCard>()
+
     val chartsList = mutableListOf<ChartItem>()
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.josephbalzano.lyricsgame.R
 import it.josephbalzano.lyricsgame.ui.adapter.ChartDetailAdapter
+import it.josephbalzano.lyricsgame.utils.Extension.setBlueNavigationBar
 import it.josephbalzano.lyricsgame.utils.NavigationBar
 import kotlinx.android.synthetic.main.activity_chart_detail.*
 
@@ -18,12 +19,7 @@ class ChartDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chart_detail)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            NavigationBar.changeColor(
-                this,
-                NavigationBar.NavBarIconColor.LIGHT,
-                getColor(R.color.colorPrimary)
-            )
+        setBlueNavigationBar()
 
         val user = intent.getStringExtra(NAME)
 

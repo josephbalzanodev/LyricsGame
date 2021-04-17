@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -39,21 +40,21 @@
     <TextView
         android:id="@+id/quizPhrase"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/gordita_black"
         android:gravity="top"
-        android:text="asdfasdf asfas dfasdf sadfas dfasdf asdfasdfasdf asdfasdf "
+        android:text="@string/play_sample_lyrics"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:translationZ="6dp"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
         app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toBottomOf="@id/quizQuestion" />
-
+        app:layout_constraintTop_toBottomOf="@id/quizQuestion"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/first"
@@ -108,5 +109,4 @@
         app:layout_constraintTop_toBottomOf="@id/second"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_goneMarginBottom="64dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

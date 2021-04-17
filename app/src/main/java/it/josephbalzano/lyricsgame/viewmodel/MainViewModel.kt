@@ -14,6 +14,7 @@ import it.josephbalzano.lyricsgame.ui.ShareData.chartsList
 import it.josephbalzano.lyricsgame.ui.ShareData.tracksMap
 import it.josephbalzano.lyricsgame.ui.model.ChartItem
 import it.josephbalzano.lyricsgame.ui.model.QuizCard
+import it.josephbalzano.lyricsgame.utils.Extension.takeRandom
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,7 +37,10 @@ class MainViewModel : ViewModel() {
                             tracks.message.body.track_list
                                 .map {
                                     it.saveLyrics(
-                                        artists.message.body.artist_list.shuffled().take(2)
+                                        artists.message
+                                            .body
+                                            .artist_list
+                                            .takeRandom(2)
                                     )
                                 })
                             .andThen { loadedGame.postValue(true) }
