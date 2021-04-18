@@ -3,6 +3,7 @@ package it.josephbalzano.lyricsgame.ui
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -34,7 +35,7 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
 
     private var layoutManager: CardStackLayoutManager? = null
     private val adapter = CardAdapter(
-        quizCards = tracksMap.takeRandom(3),
+        quizCards = tracksMap.takeRandom(6),
         listener = this
     )
 

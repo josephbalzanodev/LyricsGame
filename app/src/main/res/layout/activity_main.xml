@@ -43,6 +43,18 @@
         app:layout_constraintEnd_toEndOf="@id/appName"
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
+    <TextView
+        android:id="@+id/gameSupposing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita"
+        android:text="@string/main_subtitle"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toStartOf="@id/musixmatchLogo"
+        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+
     <Button
         android:id="@+id/play"
         style="@style/Button"
@@ -74,13 +86,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
-        android:fontFamily="@font/gordita"
-        android:text="Made with ❤️ from Joseph Balzano"
+        android:fontFamily="@font/gordita_regular"
+        android:text="@string/main_made_by"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_regular"
+        android:text="@string/main_text"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/play"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/appName"
+        app:layout_constraintVertical_bias="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

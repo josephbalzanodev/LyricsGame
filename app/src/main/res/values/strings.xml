@@ -4,6 +4,8 @@
     <string name="main_subtitle">powered by</string>
     <string name="main_btn_play">play new game 🚀</string>
     <string name="main_btn_charts">leaderboard 📊</string>
+    <string name="main_made_by">Made with ❤️ by Joseph Balzano</string>
+    <string name="main_text">Ehi, do you recognize who sings the song from a single phrase?</string>
 
     <string name="play_question">Who sings this song? 🎤</string>
     <string name="play_sample_artist">Sample Artist</string>

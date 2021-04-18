@@ -1,5 +1,7 @@
 package it.josephbalzano.lyricsgame.ui.adapter
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +20,11 @@ class CardAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.quiz_item, parent, false),
+                .inflate(
+                    R.layout.quiz_item,
+                    parent,
+                    false
+                ),
             listener
         )
 
@@ -29,16 +35,19 @@ class CardAdapter(
 
     class ViewHolder(
         view: View,
-        var listener: QuizCardListener
+        private var listener: QuizCardListener
     ) : RecyclerView.ViewHolder(view) {
-        var listButtons = listOf(itemView.first, itemView.second, itemView.third)
+        private var listButtons = listOf(itemView.first, itemView.second, itemView.third)
 
         fun bind(card: QuizCard, pos: Int) {
-            var phrase = ""
-            card.lyrics
-                .takeRandom(2)
-                .forEach { phrase += it + "\n" }
-            itemView.quizPhrase.text = phrase
+            itemView.apply {
+                buttonsIsEnabled(true)
+                quizBack.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
+
+                quizPhrase.text =
+                    card.lyrics
+                        .takeRandom(1)[0]
+            }
 
             card.possibilityArtist
                 .shuffled()
@@ -52,13 +61,13 @@ class CardAdapter(
                         listener.onCorrect(pos)
                     else listener.onError(pos)
 
-                    disableButtons()
+                    buttonsIsEnabled(false)
                 }
             }
         }
 
-        private fun disableButtons() =
-            listButtons.forEach { it.isEnabled = false }
+        private fun buttonsIsEnabled(enabled: Boolean) =
+            listButtons.forEach { it.isEnabled = enabled }
 
         interface QuizCardListener {
             fun onStartQuiz()
