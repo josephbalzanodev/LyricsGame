@@ -23,22 +23,22 @@
     <string name="chart_score_sample">100</string>
     <string name="chart_name_sample">Lorem Ipsum</string>
 
-    <string name="play_card_tutorial_first_card_text">Are you able to recognize the artist starting from a single phrase of one of his songs?</string>
+    <string name="play_card_tutorial_first_card_text">Are you ready to guess the artist from some words of his songs?</string>
     <string name="play_card_tutorial_first_card_title">Welcome to LyricsGame 👋🏻</string>
     <string name="play_card_tutorial_first_card_button">Yeah 💪🏻</string>
 
-    <string name="play_card_tutorial_second_card_title">This is the purpose of LyricsGame!</string>
-    <string name="play_card_tutorial_second_card_text">So, get ready, eyes open, and ready to recognize artists from their lyrics 📄</string>
-    <string name="play_card_tutorial_second_card_button">I\'m ready</string>
+    <string name="play_card_tutorial_second_card_title">Remember the time ⏲️ </string>
+    <string name="play_card_tutorial_second_card_text">You have 10 second to guess...</string>
+    <string name="play_card_tutorial_second_card_button">Got it ✅</string>
 
-    <string name="play_card_tutorial_third_card_title">Remember the time ⏲️</string>
-    <string name="play_card_tutorial_third_card_text">Oh yes, I almost forgot, remember that for each card you have a 10 second timer. When it expires, the card will expire 😥</string>
-    <string name="play_card_tutorial_third_card_button">I think I\'m very ready now!</string>
+    <string name="play_card_tutorial_third_card_title">...️ but don\'t use it all</string>
+    <string name="play_card_tutorial_third_card_text">If you answer quickly, you earn more points!</string>
+    <string name="play_card_tutorial_third_card_button">🤩🤩🤩</string>
 
-    <string name="play_card_tutorial_four_card_title">Yes, but last thing!️</string>
-    <string name="play_card_tutorial_four_card_text">Remember that the score is calculated together with the time. If you take less time to answer a card, more points you will receive 🤩</string>
-    <string name="play_card_tutorial_four_card_button">Now let\'s play! 🚀</string>
+    <string name="play_card_tutorial_four_card_title">This is LyricsGame!</string>
+    <string name="play_card_tutorial_four_card_text">So, get ready, eyes open 👀 </string>
+    <string name="play_card_tutorial_four_card_button">Go 🚀</string>
 
     <string name="play_start_card_title">Ready?!️</string>
-    <string name="play_start_card_text">Time is ticking...\n3... 2... 1..</string>
+    <string name="play_start_card_text">Time is ticking...\n3... 2... 1...</string>
 </resources>
