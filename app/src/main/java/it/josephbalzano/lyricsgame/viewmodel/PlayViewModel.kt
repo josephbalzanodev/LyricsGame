@@ -41,16 +41,20 @@ class PlayViewModel : ViewModel() {
 
     fun restartCountDown(type: Countdown) =
         when (type) {
-            Countdown.TEN ->
+            Countdown.TEN -> {
+                countdown3.cancel()
                 countdown10.apply {
                     cancel()
                     start()
                 }
-            Countdown.THIRD ->
+            }
+            Countdown.THIRD -> {
+                countdown10.cancel()
                 countdown3.apply {
                     cancel()
                     start()
                 }
+            }
         }
 
     fun stopTime() = countdown10.apply { cancel() }

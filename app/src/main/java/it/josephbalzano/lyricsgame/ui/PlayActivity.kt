@@ -18,12 +18,13 @@ import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.Direction
 import com.yuyakaido.android.cardstackview.StackFrom
 import it.josephbalzano.lyricsgame.R
-import it.josephbalzano.lyricsgame.ui.ShareData.tracksMap
 import it.josephbalzano.lyricsgame.ui.adapter.CardAdapter
 import it.josephbalzano.lyricsgame.ui.adapter.TYPE_QUIZ
 import it.josephbalzano.lyricsgame.ui.adapter.TYPE_START
+import it.josephbalzano.lyricsgame.ui.model.TutorialCard
 import it.josephbalzano.lyricsgame.utils.Extension.setBlueNavigationBar
 import it.josephbalzano.lyricsgame.utils.Extension.takeRandom
+import it.josephbalzano.lyricsgame.utils.Preferences
 import it.josephbalzano.lyricsgame.viewmodel.PlayViewModel
 import kotlinx.android.synthetic.main.activity_play.*
 
@@ -34,12 +35,10 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
     private val thisAct = this@PlayActivity
 
     private var layoutManager: CardStackLayoutManager? = null
-    private val adapter = CardAdapter(
-        quizCards = tracksMap.takeRandom(6),
-        listener = this
-    )
+    private var adapter: CardAdapter? = null
 
     private var isInGame: Boolean = false
+    private val keyPrefs: String = "tutorialCompleted"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +59,41 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
     }
 
     private fun initView() {
+        val listOfCards =
+            if (!Preferences.get(thisAct, keyPrefs, false))
+                listOf(
+                    TutorialCard(
+                        getString(R.string.play_card_tutorial_first_card_title),
+                        getString(R.string.play_card_tutorial_first_card_text),
+                        getString(R.string.play_card_tutorial_first_card_button)
+                    ),
+                    TutorialCard(
+                        getString(R.string.play_card_tutorial_second_card_title),
+                        getString(R.string.play_card_tutorial_second_card_text),
+                        getString(R.string.play_card_tutorial_second_card_button)
+                    ),
+                    TutorialCard(
+                        getString(R.string.play_card_tutorial_third_card_title),
+                        getString(R.string.play_card_tutorial_third_card_text),
+                        getString(R.string.play_card_tutorial_third_card_button)
+                    ),
+                    TutorialCard(
+                        getString(R.string.play_card_tutorial_four_card_title),
+                        getString(R.string.play_card_tutorial_four_card_text),
+                        getString(R.string.play_card_tutorial_four_card_button)
+                    ),
+                    Any()
+                )
+            else listOf(Any())
+
+        adapter = CardAdapter(
+            listOfCards.toMutableList().apply {
+                ShareData.tracksMap.takeRandom(6).forEach {
+                    add(it)
+                }
+            }, this
+        )
+
         name.apply {
             addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) = Unit
@@ -69,8 +103,7 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
                     start: Int,
                     count: Int,
                     after: Int
-                ) =
-                    Unit
+                ) = Unit
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
                     save.let { it.isEnabled = !name.text.isNullOrEmpty() }
@@ -92,6 +125,12 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         }
     }
 
+    private fun swipeCard() =
+        model.apply {
+            currentPosQuiz++
+            cards.swipe()
+        }
+
     private fun initObserver() =
         model.apply {
             getRemainTime()
@@ -99,8 +138,9 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
                     time.text = it.toString()
 
                     if (it == 0) {
-                        if (isInGame) thisAct.onError(this.currentPosQuiz)
-                        else cards.swipe()
+                        if (isInGame)
+                            thisAct.onError(this.currentPosQuiz)
+                        else swipeCard()
                     }
                 })
 
@@ -110,30 +150,34 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
 
     override fun onCardDisappeared(view: View?, position: Int) =
         position.let {
-            if (adapter.itemCount - 1 == it) {
+            if (adapter!!.itemCount - 1 == it) {
                 model.stopTime()
                 postGame.visibility = VISIBLE
             }
         }
 
     override fun onCardAppeared(view: View?, position: Int) {
-        when (adapter.getItemViewType(position)) {
+        when (adapter!!.getItemViewType(position)) {
             TYPE_START -> {
                 isInGame = false
                 model.restartCountDown(PlayViewModel.Countdown.THIRD)
             }
             TYPE_QUIZ -> {
                 isInGame = true
+                Preferences.put(thisAct, keyPrefs, true)
                 model.restartCountDown(PlayViewModel.Countdown.TEN)
             }
         }
     }
 
-    override fun tutorialNext() = cards.swipe()
+    override fun tutorialNext() {
+        swipeCard()
+    }
 
     override fun onCorrect(pos: Int) {
         model.apply {
             addCorrectResponse()
+
             stopTime()
             currentPosQuiz++
         }
