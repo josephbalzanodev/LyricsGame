@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/gordita"
-        android:text="Time"
+        android:text="@string/play_time"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -34,12 +34,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/gordita_ultra"
-        android:text="10"
+        android:text="@string/play_sample_time"
         android:textColor="@color/colorAccent"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/timeTitle"
         app:layout_constraintStart_toEndOf="@id/timeTitle"
         app:layout_constraintTop_toTopOf="@id/timeTitle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="time,timeTitle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/scoreGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="score, scoreTitle" />
 
     <TextView
         android:id="@+id/scoreTitle"
@@ -47,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/gordita"
-        android:text="Score"
+        android:text="@string/play_score"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -59,12 +73,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/gordita_ultra"
-        android:text="0"
+        android:text="@string/play_score_sample"
         android:textColor="@color/colorAccent"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/timeTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/scoreTitle"
         app:layout_constraintEnd_toStartOf="@+id/scoreTitle"
-        app:layout_constraintTop_toTopOf="@id/timeTitle" />
+        app:layout_constraintTop_toTopOf="@id/scoreTitle" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/postGame"
@@ -78,7 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gordita_ultra"
-        android:hint="Your name"
+        android:hint="@string/play_hint_name"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="32sp"

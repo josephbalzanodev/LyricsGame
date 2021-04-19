@@ -1,15 +1,13 @@
 package it.josephbalzano.lyricsgame.ui
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import it.josephbalzano.lyricsgame.R
 import it.josephbalzano.lyricsgame.utils.Extension.setBlueNavigationBar
-import it.josephbalzano.lyricsgame.utils.NavigationBar
-import it.josephbalzano.lyricsgame.utils.NavigationBar.changeColor
 import it.josephbalzano.lyricsgame.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             this,
             Observer { play.isEnabled = it }
         )
+
+        model.networkError.observe(this, Observer {
+            if (it.isNotBlank())
+                Snackbar.make(appName, it, Snackbar.LENGTH_SHORT).show()
+        })
     }
 
     override fun onResume() {

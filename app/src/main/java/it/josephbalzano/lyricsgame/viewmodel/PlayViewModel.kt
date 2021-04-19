@@ -8,15 +8,16 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-
 class PlayViewModel : ViewModel() {
+    enum class Countdown { TEN, THIRD }
+
     val database: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     private val remainTime = MutableLiveData(10)
     private val score = MutableLiveData(0)
     var currentPosQuiz = 0
 
-    private var countdown: CountDownTimer =
+    private var countdown10: CountDownTimer =
         object : CountDownTimer(10000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainTime.postValue((millisUntilFinished / 1000).toInt())
@@ -27,13 +28,32 @@ class PlayViewModel : ViewModel() {
             }
         }
 
-    fun restartCountDown() =
-        countdown.apply {
-            cancel()
-            start()
+    private var countdown3: CountDownTimer =
+        object : CountDownTimer(3000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainTime.postValue((millisUntilFinished / 1000).toInt())
+            }
+
+            override fun onFinish() {
+                remainTime.postValue(0)
+            }
         }
 
-    fun stopTime() = countdown.apply { cancel() }
+    fun restartCountDown(type: Countdown) =
+        when (type) {
+            Countdown.TEN ->
+                countdown10.apply {
+                    cancel()
+                    start()
+                }
+            Countdown.THIRD ->
+                countdown3.apply {
+                    cancel()
+                    start()
+                }
+        }
+
+    fun stopTime() = countdown10.apply { cancel() }
 
     fun getRemainTime() = remainTime
 

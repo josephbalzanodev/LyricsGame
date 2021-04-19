@@ -49,9 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/gordita_light"
-        android:text="Leaderboard"
+        android:text="@string/main_btn_charts"
         android:textColor="@color/colorAccent"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@id/guideline3" />
@@ -75,8 +75,8 @@
         android:layout_height="10dp"
         android:background="@drawable/top_leaderboard"
         android:rotation="-180"
-        app:layout_constraintEnd_toEndOf="@+id/chart"
-        app:layout_constraintStart_toStartOf="@+id/chart"
+        app:layout_constraintEnd_toEndOf="@id/chart"
+        app:layout_constraintStart_toStartOf="@id/chart"
         app:layout_constraintTop_toBottomOf="@id/chart" />
 
     <View
@@ -85,8 +85,8 @@
         android:background="@drawable/leaderboard_gradient"
         android:rotation="-180"
         app:layout_constraintBottom_toBottomOf="@id/chart"
-        app:layout_constraintEnd_toEndOf="@+id/chart"
-        app:layout_constraintStart_toStartOf="@+id/chart" />
+        app:layout_constraintEnd_toEndOf="@id/chart"
+        app:layout_constraintStart_toStartOf="@id/chart" />
 
     <View
         android:layout_width="0dp"

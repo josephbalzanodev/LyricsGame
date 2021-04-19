@@ -14,6 +14,7 @@ interface TrackAPI {
         @Query("callback") callback: String = "callback",
         @Query("page") page: String = "1",
         @Query("page_size") page_size: String = "10",
+        @Query("f_has_lyrics") f_has_lyrics: String = "true",
         @Query("country") country: String = "it"
     ): Single<ResponseChartTrackGet>
 }

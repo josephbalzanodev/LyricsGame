@@ -3,7 +3,6 @@ package it.josephbalzano.lyricsgame.ui
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,14 +20,15 @@ import com.yuyakaido.android.cardstackview.StackFrom
 import it.josephbalzano.lyricsgame.R
 import it.josephbalzano.lyricsgame.ui.ShareData.tracksMap
 import it.josephbalzano.lyricsgame.ui.adapter.CardAdapter
+import it.josephbalzano.lyricsgame.ui.adapter.TYPE_QUIZ
+import it.josephbalzano.lyricsgame.ui.adapter.TYPE_START
 import it.josephbalzano.lyricsgame.utils.Extension.setBlueNavigationBar
 import it.josephbalzano.lyricsgame.utils.Extension.takeRandom
 import it.josephbalzano.lyricsgame.viewmodel.PlayViewModel
 import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity(), CardStackListener,
-    CardAdapter.ViewHolder.QuizCardListener {
-
+    CardAdapter.QuizCardListener {
     val model: PlayViewModel by viewModels()
 
     private val thisAct = this@PlayActivity
@@ -38,6 +38,8 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         quizCards = tracksMap.takeRandom(6),
         listener = this
     )
+
+    private var isInGame: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +98,10 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
                 .observe(thisAct, Observer {
                     time.text = it.toString()
 
-                    if (it == 0) thisAct.onError(this.currentPosQuiz)
+                    if (it == 0) {
+                        if (isInGame) thisAct.onError(this.currentPosQuiz)
+                        else cards.swipe()
+                    }
                 })
 
             observeScore()
@@ -112,8 +117,19 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         }
 
     override fun onCardAppeared(view: View?, position: Int) {
-        model.restartCountDown()
+        when (adapter.getItemViewType(position)) {
+            TYPE_START -> {
+                isInGame = false
+                model.restartCountDown(PlayViewModel.Countdown.THIRD)
+            }
+            TYPE_QUIZ -> {
+                isInGame = true
+                model.restartCountDown(PlayViewModel.Countdown.TEN)
+            }
+        }
     }
+
+    override fun tutorialNext() = cards.swipe()
 
     override fun onCorrect(pos: Int) {
         model.apply {
@@ -174,7 +190,5 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
     override fun onCardCanceled() = Unit
 
     override fun onCardRewound() = Unit
-
-    override fun onStartQuiz() = Unit
     //endregion
 }

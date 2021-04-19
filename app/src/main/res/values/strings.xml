@@ -3,7 +3,7 @@
 
     <string name="main_subtitle">powered by</string>
     <string name="main_btn_play">play new game 🚀</string>
-    <string name="main_btn_charts">leaderboard 📊</string>
+    <string name="main_btn_charts">Leaderboard 📊</string>
     <string name="main_made_by">Made with ❤️ by Joseph Balzano</string>
     <string name="main_text">Ehi, do you recognize who sings the song from a single phrase?</string>
 
@@ -11,4 +11,34 @@
     <string name="play_sample_artist">Sample Artist</string>
     <string name="play_add_me">Save 🚀</string>
     <string name="play_sample_lyrics">Lorem Ipsum dolor sit amet consectetur adipiscing elit</string>
+    <string name="play_time">Time</string>
+    <string name="play_sample_time">10</string>
+    <string name="play_score">Score</string>
+    <string name="play_score_sample">000</string>
+    <string name="play_hint_name">Your name</string>
+
+    <string name="chart_plays_of">Plays of:</string>
+    <string name="chart_date_sample">16 Aprile 2021</string>
+    <string name="chart_score">Score:</string>
+    <string name="chart_score_sample">100</string>
+    <string name="chart_name_sample">Lorem Ipsum</string>
+
+    <string name="play_card_tutorial_first_card_text">Are you able to recognize the artist starting from a single phrase of one of his songs?</string>
+    <string name="play_card_tutorial_first_card_title">Welcome to LyricsGame 👋🏻</string>
+    <string name="play_card_tutorial_first_card_button">Yeah 💪🏻</string>
+
+    <string name="play_card_tutorial_second_card_title">This is the purpose of LyricsGame!</string>
+    <string name="play_card_tutorial_second_card_text">So, get ready, eyes open, and ready to recognize artists from their lyrics 📄</string>
+    <string name="play_card_tutorial_second_card_button">I\'m ready</string>
+
+    <string name="play_card_tutorial_third_card_title">Remember the time ⏲️</string>
+    <string name="play_card_tutorial_third_card_text">Oh yes, I almost forgot, remember that for each card you have a 10 second timer. When it expires, the card will expire 😥</string>
+    <string name="play_card_tutorial_third_card_button">I think I\'m very ready now!</string>
+
+    <string name="play_card_tutorial_four_card_title">Yes, but last thing!️</string>
+    <string name="play_card_tutorial_four_card_text">Remember that the score is calculated together with the time. If you take less time to answer a card, more points you will receive 🤩</string>
+    <string name="play_card_tutorial_four_card_button">Now let\'s play! 🚀</string>
+
+    <string name="play_start_card_title">Ready?!️</string>
+    <string name="play_start_card_text">Time is ticking...\n3... 2... 1..</string>
 </resources>

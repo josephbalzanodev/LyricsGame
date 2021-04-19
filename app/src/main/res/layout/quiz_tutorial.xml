@@ -21,16 +21,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/quizQuestion"
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/gordita"
-        android:text="@string/play_question"
+        android:text="@string/play_card_tutorial_first_card_title"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimarySemiTrasparent"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:translationZ="6dp"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/quizPhrase"
+        android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -46,57 +46,23 @@
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/gordita_black"
         android:gravity="top"
-        android:text="@string/play_sample_lyrics"
+        android:text="@string/play_card_tutorial_first_card_text"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:translationZ="6dp"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
         app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toBottomOf="@id/quizQuestion"
+        app:layout_constraintTop_toBottomOf="@id/title"
         tools:ignore="RtlCompat" />
 
     <Button
-        android:id="@+id/first"
+        android:id="@+id/next"
         style="@style/Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:enabled="true"
-        android:stateListAnimator="@animator/sla_button_top"
-        android:text="@string/play_sample_artist"
-        android:translationZ="6dp"
-        app:layout_constraintEnd_toEndOf="@id/quizBack"
-        app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toBottomOf="@id/quizPhrase"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/second"
-        style="@style/Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:enabled="true"
-        android:stateListAnimator="@animator/sla_button_top"
-        android:text="@string/play_sample_artist"
-        android:translationZ="6dp"
-        app:layout_constraintEnd_toEndOf="@id/quizBack"
-        app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toBottomOf="@id/first"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/third"
-        style="@style/Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:enabled="true"
@@ -106,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/quizBack"
         app:layout_constraintStart_toStartOf="@id/quizBack"
-        app:layout_constraintTop_toBottomOf="@id/second"
+        app:layout_constraintTop_toBottomOf="@id/text"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_goneMarginBottom="64dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,6 @@
         android:id="@+id/musixmatchLogo"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="26dp"
         android:src="@drawable/ic_mark"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="@id/appName"
