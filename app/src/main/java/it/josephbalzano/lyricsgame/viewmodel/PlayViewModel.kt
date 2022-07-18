@@ -18,44 +18,44 @@ class PlayViewModel : ViewModel() {
     var currentPosQuiz = 0
 
     private var countdown10: CountDownTimer =
-        object : CountDownTimer(10000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainTime.postValue((millisUntilFinished / 1000).toInt())
-            }
+            object : CountDownTimer(10000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    remainTime.postValue((millisUntilFinished / 1000).toInt())
+                }
 
-            override fun onFinish() {
-                remainTime.postValue(0)
+                override fun onFinish() {
+                    remainTime.postValue(0)
+                }
             }
-        }
 
     private var countdown3: CountDownTimer =
-        object : CountDownTimer(3000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainTime.postValue((millisUntilFinished / 1000).toInt())
-            }
+            object : CountDownTimer(3000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    remainTime.postValue((millisUntilFinished / 1000).toInt())
+                }
 
-            override fun onFinish() {
-                remainTime.postValue(0)
+                override fun onFinish() {
+                    remainTime.postValue(0)
+                }
             }
-        }
 
     fun restartCountDown(type: Countdown) =
-        when (type) {
-            Countdown.TEN -> {
-                countdown3.cancel()
-                countdown10.apply {
-                    cancel()
-                    start()
+            when (type) {
+                Countdown.TEN -> {
+                    countdown3.cancel()
+                    countdown10.apply {
+                        cancel()
+                        start()
+                    }
+                }
+                Countdown.THIRD -> {
+                    countdown10.cancel()
+                    countdown3.apply {
+                        cancel()
+                        start()
+                    }
                 }
             }
-            Countdown.THIRD -> {
-                countdown10.cancel()
-                countdown3.apply {
-                    cancel()
-                    start()
-                }
-            }
-        }
 
     fun stopTime() = countdown10.apply { cancel() }
 
@@ -73,19 +73,19 @@ class PlayViewModel : ViewModel() {
     fun saveData(text: Editable?): MutableLiveData<Boolean> {
         val saved = MutableLiveData(false)
         val newScoring = hashMapOf(
-            "name" to text.toString(),
-            "score" to score.value,
-            "date" to Timestamp(Date())
+                "name" to text.toString(),
+                "score" to score.value,
+                "date" to Timestamp(Date())
         )
 
         val charts = database.collection("chart")
         charts.add(newScoring)
-            .addOnSuccessListener { documentReference ->
-                saved.postValue(true)
-            }
-            .addOnFailureListener { e ->
-                saved.postValue(true)
-            }
+                .addOnSuccessListener { documentReference ->
+                    saved.postValue(true)
+                }
+                .addOnFailureListener { e ->
+                    saved.postValue(true)
+                }
         return saved
     }
 

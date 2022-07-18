@@ -93,6 +93,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gordita_ultra"
         android:hint="@string/play_hint_name"
+        android:maxLength="30"
+        android:maxLines="1"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="32sp"

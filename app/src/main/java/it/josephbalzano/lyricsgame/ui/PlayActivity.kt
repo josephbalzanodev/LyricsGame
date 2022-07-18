@@ -47,12 +47,12 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         setBlueNavigationBar()
 
         layoutManager =
-            CardStackLayoutManager(baseContext, this)
-                .apply {
-                    setStackFrom(StackFrom.Top)
-                    setCanScrollHorizontal(false)
-                    setCanScrollVertical(false)
-                }
+                CardStackLayoutManager(baseContext, this)
+                        .apply {
+                            setStackFrom(StackFrom.Top)
+                            setCanScrollHorizontal(false)
+                            setCanScrollVertical(false)
+                        }
 
         initObserver()
         initView()
@@ -60,38 +60,38 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
 
     private fun initView() {
         val listOfCards =
-            if (!Preferences.get(thisAct, keyPrefs, false))
-                listOf(
-                    TutorialCard(
-                        getString(R.string.play_card_tutorial_first_card_title),
-                        getString(R.string.play_card_tutorial_first_card_text),
-                        getString(R.string.play_card_tutorial_first_card_button)
-                    ),
-                    TutorialCard(
-                        getString(R.string.play_card_tutorial_second_card_title),
-                        getString(R.string.play_card_tutorial_second_card_text),
-                        getString(R.string.play_card_tutorial_second_card_button)
-                    ),
-                    TutorialCard(
-                        getString(R.string.play_card_tutorial_third_card_title),
-                        getString(R.string.play_card_tutorial_third_card_text),
-                        getString(R.string.play_card_tutorial_third_card_button)
-                    ),
-                    TutorialCard(
-                        getString(R.string.play_card_tutorial_four_card_title),
-                        getString(R.string.play_card_tutorial_four_card_text),
-                        getString(R.string.play_card_tutorial_four_card_button)
-                    ),
-                    Any()
-                )
-            else listOf(Any())
+                if (!Preferences.get(thisAct, keyPrefs, false))
+                    listOf(
+                            TutorialCard(
+                                    getString(R.string.play_card_tutorial_first_card_title),
+                                    getString(R.string.play_card_tutorial_first_card_text),
+                                    getString(R.string.play_card_tutorial_first_card_button)
+                            ),
+                            TutorialCard(
+                                    getString(R.string.play_card_tutorial_second_card_title),
+                                    getString(R.string.play_card_tutorial_second_card_text),
+                                    getString(R.string.play_card_tutorial_second_card_button)
+                            ),
+                            TutorialCard(
+                                    getString(R.string.play_card_tutorial_third_card_title),
+                                    getString(R.string.play_card_tutorial_third_card_text),
+                                    getString(R.string.play_card_tutorial_third_card_button)
+                            ),
+                            TutorialCard(
+                                    getString(R.string.play_card_tutorial_four_card_title),
+                                    getString(R.string.play_card_tutorial_four_card_text),
+                                    getString(R.string.play_card_tutorial_four_card_button)
+                            ),
+                            Any()
+                    )
+                else listOf(Any())
 
         adapter = CardAdapter(
-            listOfCards.toMutableList().apply {
-                ShareData.tracksMap.takeRandom(6).forEach {
-                    add(it)
-                }
-            }, this
+                listOfCards.toMutableList().apply {
+                    ShareData.tracksMap.takeRandom(6).forEach {
+                        add(it)
+                    }
+                }, this
         )
 
         name.apply {
@@ -99,14 +99,14 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
                 override fun afterTextChanged(s: Editable?) = Unit
 
                 override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
                 ) = Unit
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
-                    save.let { it.isEnabled = !name.text.isNullOrEmpty() }
+                        save.let { it.isEnabled = !name.text.isNullOrEmpty() }
             })
         }
 
@@ -117,44 +117,43 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
 
         save.apply {
             setOnClickListener {
-                model.saveData(name.text)
-                    .observe(thisAct, Observer {
-                        if (it) finish()
-                    })
+                model.saveData(name.text).observe(thisAct, Observer {
+                    if (it) finish()
+                })
             }
         }
     }
 
     private fun swipeCard() =
-        model.apply {
-            currentPosQuiz++
-            cards.swipe()
-        }
+            model.apply {
+                currentPosQuiz++
+                cards.swipe()
+            }
 
     private fun initObserver() =
-        model.apply {
-            getRemainTime()
-                .observe(thisAct, Observer {
-                    time.text = it.toString()
+            model.apply {
+                getRemainTime()
+                        .observe(thisAct, Observer {
+                            time.text = it.toString()
 
-                    if (it == 0) {
-                        if (isInGame)
-                            thisAct.onError(this.currentPosQuiz)
-                        else swipeCard()
-                    }
-                })
+                            if (it == 0) {
+                                if (isInGame)
+                                    thisAct.onError(this.currentPosQuiz)
+                                else swipeCard()
+                            }
+                        })
 
-            observeScore()
-                .observe(thisAct, Observer { score.text = it.toString() })
-        }
+                observeScore()
+                        .observe(thisAct, Observer { score.text = it.toString() })
+            }
 
     override fun onCardDisappeared(view: View?, position: Int) =
-        position.let {
-            if (adapter!!.itemCount - 1 == it) {
-                model.stopTime()
-                postGame.visibility = VISIBLE
+            position.let {
+                if (adapter!!.itemCount - 1 == it) {
+                    model.stopTime()
+                    postGame.visibility = VISIBLE
+                }
             }
-        }
 
     override fun onCardAppeared(view: View?, position: Int) {
         when (adapter!!.getItemViewType(position)) {
@@ -170,9 +169,7 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         }
     }
 
-    override fun tutorialNext() {
-        swipeCard()
-    }
+    override fun tutorialNext() = swipeCard()
 
     override fun onCorrect(pos: Int) {
         model.apply {
@@ -183,9 +180,9 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         }
 
         colorAnimation(
-            pos,
-            resources.getColor(R.color.quizBackStartColor),
-            resources.getColor(R.color.quizBackCorrectColor)
+                pos,
+                resources.getColor(R.color.quizBackStartColor),
+                resources.getColor(R.color.quizBackCorrectColor)
         )
     }
 
@@ -196,35 +193,35 @@ class PlayActivity : AppCompatActivity(), CardStackListener,
         }
 
         getViewFromQuizCard<View>(pos, R.id.quizBack)?.startAnimation(
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.wiggie_anim
-            )
+                AnimationUtils.loadAnimation(
+                        this,
+                        R.anim.wiggie_anim
+                )
         )
 
         colorAnimation(
-            pos,
-            resources.getColor(R.color.quizBackStartColor),
-            resources.getColor(R.color.quizBackErrorColor)
+                pos,
+                resources.getColor(R.color.quizBackStartColor),
+                resources.getColor(R.color.quizBackErrorColor)
         )
     }
 
     private fun <T : View?> getViewFromQuizCard(pos: Int, id: Int): T? =
-        cards.layoutManager?.findViewByPosition(pos)?.findViewById<T>(id)
+            cards.layoutManager?.findViewByPosition(pos)?.findViewById<T>(id)
 
     private fun colorAnimation(pos: Int, colorStart: Int, colorEnd: Int) =
-        ValueAnimator().setDuration(1500L)
-            .apply {
-                setIntValues(colorStart, colorEnd)
-                setEvaluator(ArgbEvaluator())
-                addUpdateListener { animator ->
-                    getViewFromQuizCard<View>(pos, R.id.quizBack)
-                        ?.backgroundTintList =
-                        ColorStateList.valueOf(animator.animatedValue as Int)
-                }
-                doOnEnd { cards.swipe() }
-                start()
-            }
+            ValueAnimator().setDuration(1500L)
+                    .apply {
+                        setIntValues(colorStart, colorEnd)
+                        setEvaluator(ArgbEvaluator())
+                        addUpdateListener { animator ->
+                            getViewFromQuizCard<View>(pos, R.id.quizBack)
+                                    ?.backgroundTintList =
+                                    ColorStateList.valueOf(animator.animatedValue as Int)
+                        }
+                        doOnEnd { cards.swipe() }
+                        start()
+                    }
 
     // region Unused listener functions
     override fun onCardDragging(direction: Direction?, ratio: Float) = Unit

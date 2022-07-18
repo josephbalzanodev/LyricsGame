@@ -36,10 +36,10 @@ object NavigationBar {
      */
     @RequiresApi(api = 26)
     fun changeColor(
-        forcedBy: String,
-        activity: Activity,
-        iconColor: NavBarIconColor,
-        color: Int
+            forcedBy: String,
+            activity: Activity,
+            iconColor: NavBarIconColor,
+            color: Int
     ) {
         if (!TextUtils.isEmpty(this.forcedBy) && this.forcedBy != forcedBy) return
         this.forcedBy = forcedBy
@@ -55,9 +55,9 @@ object NavigationBar {
      */
     @RequiresApi(api = 26)
     private fun privateChangeColor(
-        activity: Activity,
-        iconColor: NavBarIconColor,
-        color: Int
+            activity: Activity,
+            iconColor: NavBarIconColor,
+            color: Int
     ) {
         val window = activity.window
         window.navigationBarColor = color
@@ -80,7 +80,7 @@ object NavigationBar {
      */
     fun detachForce(forcedBy: String) {
         if (!TextUtils.isEmpty(this.forcedBy) && this.forcedBy == forcedBy) this.forcedBy =
-            null
+                null
     }
 
     /**

@@ -27,7 +27,7 @@ object Client {
                     .request(chain.request())
                     .code(500)
                     .build()
-            }
+            } 
 
             val header = Gson().fromJson<GeneralResponse>(
                 response?.peekBody(50000)?.string() ?: "",

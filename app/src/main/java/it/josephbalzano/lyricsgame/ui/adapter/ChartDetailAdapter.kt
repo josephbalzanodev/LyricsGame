@@ -9,26 +9,22 @@ import it.josephbalzano.lyricsgame.ui.model.ChartItem
 import kotlinx.android.synthetic.main.chart_detail_item.view.*
 
 class ChartDetailAdapter(
-    var score: List<ChartItem> = mutableListOf()
+        var score: List<ChartItem> = mutableListOf()
 ) : RecyclerView.Adapter<ChartDetailAdapter.ViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.chart_detail_item, parent, false)
-        )
+            ViewHolder(
+                    LayoutInflater.from(parent.context)
+                            .inflate(R.layout.chart_detail_item, parent, false))
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(score[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(score[position])
 
     override fun getItemCount(): Int = score.size
 
-    class ViewHolder(
-        view: View
-    ) : RecyclerView.ViewHolder(view) {
-        fun bind(card: ChartItem) {
-            itemView.score.text = card.score.toString()
-            itemView.whenDate.text = "\uD83D\uDCC5 " + card.date
-        }
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(card: ChartItem) =
+                with(card) {
+                    itemView.score.text = score.toString()
+                    itemView.whenDate.text = "\uD83D\uDCC5 " + date
+                }
     }
 }

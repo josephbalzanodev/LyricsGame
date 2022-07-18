@@ -18,6 +18,6 @@ class App : Application() {
         FirebaseApp.initializeApp(applicationContext)
 
         FirebaseCrashlytics.getInstance()
-            .setCrashlyticsCollectionEnabled(true)
+                .setCrashlyticsCollectionEnabled(true)
     }
 }

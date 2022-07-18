@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         initButtons()
 
         model.loadGame().observe(
-            this,
-            Observer { play.isEnabled = it }
+                this,
+                Observer { play.isEnabled = it }
         )
 
         model.networkError.observe(this, Observer {
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         model.loadChart().observe(
-            this,
-            Observer { chart.isEnabled = it }
+                this,
+                Observer { chart.isEnabled = it }
         )
     }
 
